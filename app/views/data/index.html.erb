@@ -1,0 +1,5 @@
+<h1>Average Temperature over time</h1>
+<%= area_chart SensorReading.group_by_minute(:created_at).average(:temperature), suffix: "°C" %>
+
+<h1>Average Humidity over time</h1>
+<%= area_chart SensorReading.group_by_minute(:created_at).average(:humidity), suffix: "%" %>

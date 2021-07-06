@@ -4,12 +4,13 @@ module ApplicationHelper
   class MQTTSubscriber
     def run
       Thread.new do
-        username = 'hello-world-application'
-        password = 'PASSWORD_HERE'
+        username = 'physio-magnetometer-proj'
+        password = 'QV5NN3BGXY7SQVGH7QMLOJST4BZYMHKGRF4XUGA'
+        #API Key: QV5NN3BGXY7SQVGH7QMLOJST4BZYMHKGRF4XUGA
 
-        application_id = 'hello-world-application'
+        application_id = 'physio-magnetometer-proj'
 
-        device_id = 'thingsuno'
+        device_id = '0004a30b001c1cc5'
 
         topic_base = "v3/#{application_id}@ttn/devices/#{device_id}"
 
@@ -21,7 +22,7 @@ module ApplicationHelper
           parsed_message = JSON.parse message
           data = parsed_message['uplink_message']['decoded_payload']
 
-          SensorReading.create(temperature: data['temp'], humidity: data['humidity'])
+          SensorReading.create(exercise1: data['ex1'], exercise2: data['ex2'], exercise3: data['ex3'])
         end
       end
     end

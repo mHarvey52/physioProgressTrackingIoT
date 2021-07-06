@@ -1,5 +1,12 @@
-<h1>Average Temperature over time</h1>
-<%= area_chart SensorReading.group_by_minute(:created_at).average(:temperature), suffix: "°C" %>
+#<h1>Average Temperature over time</h1>
+#<%= area_chart SensorReading.group_by_minute(:created_at).average(:temperature), suffix: "°C" %>
 
-<h1>Average Humidity over time</h1>
-<%= area_chart SensorReading.group_by_minute(:created_at).average(:humidity), suffix: "%" %>
+
+<h1>Exercise 1 Sensor Readings</h1>
+<%= line_chart SensorReading.group_by_week(:created_at).count(:exercise1), xtitle: "Date", ytitle: "Range of Motion (°)" %>
+
+<h1>Exercise 2 Sensor Readings</h1>
+<%= line_chart SensorReading.group_by_week(:created_at).count(:exercise2), xtitle: "Date", ytitle: "Range of Motion (°)" %>
+
+<h1>Exercise 3 Sensor Readings</h1>
+<%= line_chart SensorReading.group_by_week(:created_at).count(:exercise3), xtitle: "Date", ytitle: "Range of Motion (°)" %>
